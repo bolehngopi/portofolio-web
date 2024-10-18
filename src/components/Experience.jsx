@@ -6,7 +6,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-16 px-8"
+      className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-16 px-8 flex flex-col items-center justify-center"
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12">Experience</h2>

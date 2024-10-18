@@ -14,6 +14,10 @@ export const navLinks = [
   {
     id: "contact",
     title: "Contact",
+  },
+  {
+    title: "Blog",
+    link: "https://bolehngopi.github.io/myblog",
   }
 ];
 
