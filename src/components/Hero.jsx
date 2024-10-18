@@ -1,8 +1,8 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import { FaGithub, FaLinkedin, FaArrowDown } from "react-icons/fa";
 
 const Hero = () => {
@@ -42,6 +42,7 @@ const Hero = () => {
           {/* Lighting */}
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
+          {/* <pointLight position={[10, 50, 10]} /> */}
 
           {/* 3D Object */}
           <Suspense fallback={null}>
@@ -98,9 +99,24 @@ const Hero = () => {
 
 // Custom 3D Model Component
 const Model3D = () => {
-  const { scene } = useGLTF("/3D/Shiroko_fumo.glb"); // Load your GLB file from public directory
+  const { scene } = useGLTF("/3D/Shiroko_fumo.glb"); // Load GLB file
+  const modelRef = useRef(); // Reference to the model
 
-  return <primitive object={scene} scale={6} position={[0, -2.5, 0]} />;
+  // Add rotation animation
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.01; // Adjust rotation speed here
+    }
+  });
+
+  return (
+    <primitive
+      ref={modelRef}
+      object={scene}
+      scale={6}
+      position={[0, -2.5, 0]}
+    />
+  );
 };
 
 export default Hero;
