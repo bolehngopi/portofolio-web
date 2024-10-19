@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/data";
+import { navLinks } from "@/data"; // Import nav links data
 import { useEffect, useState, useMemo, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -8,28 +8,30 @@ const Navbar = () => {
   const [active, setActive] = useState("hero");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navbarRef = useRef(null); // To track navbar height
+  const navbarRef = useRef(null);
 
-  // Helper: Get the height of the navbar to adjust scroll spy logic
-  const getNavbarHeight = () => navbarRef.current?.offsetHeight || 0;
-
+  // Detect scroll to change active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setScrolled(scrollTop > 100);
+      const navbarHeight = navbarRef.current?.offsetHeight || 0;
+      const scrollPosition = window.scrollY + navbarHeight;
 
-      const navbarHeight = getNavbarHeight();
-      const sections = document.querySelectorAll("div[id]");
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
 
-      // Find the currently visible section
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - navbarHeight;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
-          setActive(section.id);
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeigh
+          ) {
+            setActive(link.id);
+          }
         }
       });
+
+      setScrolled(window.scrollY > 50); // Add shadow when scrolled
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -44,12 +46,11 @@ const Navbar = () => {
         return (
           <a
             key={link.title}
-            href={isExternal ? link.link : `#${link.id}`}
+            href={isExternal ? link.link : `#${link.id}`} // Ensure correct linking
             target={isExternal ? "_blank" : "_self"}
             rel={isExternal ? "noopener noreferrer" : undefined}
-            className={`${
-              active === link.id ? "text-white" : "text-slate-500"
-            } text-sm font-medium ml-6 transition-colors duration-300`}
+            className={`${active === link.id ? "text-white" : "text-slate-500 hover:text-white/50"
+              } text-sm font-medium ml-6 transition-colors duration-300`}
             aria-current={active === link.id ? "page" : undefined}
           >
             {link.title}
@@ -62,9 +63,8 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
-      className={`w-full fixed z-40 p-4 transition-all duration-300 ${
-        scrolled ? "bg-black/80 shadow-md" : "bg-transparent"
-      } pointer-events-auto`}
+      className={`w-full fixed z-40 p-4 transition-all duration-300 ${scrolled ? "bg-black/80 shadow-md" : "bg-transparent"
+        } pointer-events-auto`}
     >
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
@@ -95,9 +95,8 @@ const Navbar = () => {
                 href={isExternal ? link.link : `#${link.id}`}
                 target={isExternal ? "_blank" : "_self"}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className={`${
-                  active === link.id ? "text-white" : "text-slate-500"
-                } text-sm font-medium`}
+                className={`${active === link.id ? "text-white" : "text-slate-500"
+                  } text-sm font-medium`}
                 onClick={() => setToggle(false)}
               >
                 {link.title}

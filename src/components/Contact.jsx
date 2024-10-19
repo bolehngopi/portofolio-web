@@ -11,7 +11,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-16 px-4 md:px-8 text-white flex flex-col items-center justify-center"
+      className="min-h-screen bg-gradient-to-b from-black to-gray-900 py-16 px-4 md:px-8 text-white flex flex-col items-center justify-center"
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12">Get in Touch</h2>
