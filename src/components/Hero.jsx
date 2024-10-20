@@ -99,7 +99,7 @@ const Hero = () => {
 
 // Custom 3D Model Component
 const Model3D = () => {
-  const { scene } = useGLTF("/3D/Shiroko_fumo.glb"); // Load GLB file
+  const { scene } = useGLTF("/portofolio-web/3D/Shiroko_fumo.glb"); // Load GLB file
   const modelRef = useRef(); // Reference to the model
 
   // Add rotation animation
