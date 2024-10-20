@@ -38,7 +38,7 @@ const Hero = () => {
     >
       {/* 3D Background Canvas */}
       <div className="absolute inset-0 z-0">
-        <Canvas>
+        <Canvas gl={{ preserveDrawingBuffer: true }}>
           {/* Lighting */}
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
