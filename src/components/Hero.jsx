@@ -64,26 +64,6 @@ const Hero = () => {
           {text}
           <span className="animate-blink">|</span>
         </h2>
-
-        {/* Social Links */}
-        <div className="flex gap-6">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white text-2xl hover:scale-110 transform transition-all duration-300"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white text-2xl hover:scale-110 transform transition-all duration-300"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
       </div>
 
       {/* Scroll Down Button */}

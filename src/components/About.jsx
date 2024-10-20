@@ -1,6 +1,13 @@
 "use client";
 
-import { FaCode, FaPalette, FaMobileAlt } from "react-icons/fa";
+import {
+  FaCode,
+  FaPalette,
+  FaMobileAlt,
+  FaGithub,
+  FaLinkedin,
+  FaTwitter
+} from "react-icons/fa";
 
 const About = () => {
   return (
@@ -8,10 +15,46 @@ const About = () => {
       id="about"
       className="min-h-screen py-16 px-6 bg-white text-black dark:bg-black dark:text-white flex flex-col items-center justify-center"
     >
-      {/* Section Title */}
-      <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
-        About Me
-      </h2>
+      {/* Title and Social Links Container */}
+      <div className="w-full max-w-3xl flex flex-col md:flex-row md:justify-evenly items-center mb-8">
+        {/* Section Title */}
+        <h2 className="text-4xl md:text-5xl font-bold text-center md:text-left">
+          About Me
+        </h2>
+
+        {/* Social Links */}
+        <div className="flex mt-4 md:mt-0 gap-6">
+          <a
+            href="https://github.com/bolehngopi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl text-gray-500 hover:text-black dark:hover:text-white transition-colors duration-300"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+
+          <a
+            href="https://linkedin.com/in/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl text-blue-600 hover:text-black dark:hover:text-white transition-colors duration-300"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
+
+          <a
+            href="https://twitter.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl text-blue-500 hover:text-black dark:hover:text-white transition-colors duration-300"
+            aria-label="Twitter"
+          >
+            <FaTwitter />
+          </a>
+        </div>
+      </div>
 
       {/* Introduction Text */}
       <p className="max-w-2xl text-center text-lg leading-relaxed mb-12">
@@ -20,30 +63,10 @@ const About = () => {
         I bridge the gap between code and design to craft exceptional projects.
       </p>
 
-      {/* Skill Cards */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
-        {skills.map((skill) => (
-          <div
-            key={skill.id}
-            className="group p-6 rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white transform transition-all duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <div className="flex justify-center items-center mb-4">
-              <div className="p-4 rounded-full bg-white text-indigo-600 group-hover:text-white group-hover:bg-indigo-700 transition-all duration-300">
-                {skill.icon}
-              </div>
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-center">
-              {skill.title}
-            </h3>
-            <p className="text-center text-sm leading-relaxed">{skill.description}</p>
-          </div>
-        ))}
-      </div> */}
-
       {/* Call to Action */}
       <a
         href="#contact"
-        className="mt-12 px-8 py-4 bg-primary text-white font-medium rounded-full shadow-md hover:bg-primary/90 transition duration-300"
+        className="mt-8 px-8 py-4 bg-primary text-white font-medium rounded-full shadow-md hover:bg-primary/90 transition duration-300"
       >
         Let's Collaborate
       </a>
